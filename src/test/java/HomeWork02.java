@@ -1,3 +1,6 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -12,11 +15,13 @@ public class HomeWork02 {
     private final By ARTICLE_PAGE_TITLE = By.xpath(".//h1[contains(@class, 'd-inline')]");
     private final By ARTICLE_COMMENT_COUNT = By.xpath(".//a[contains(@class, 'd-print-none')]");
     private final By ARTICLE_COMMENT_TITLE = By.xpath(".//h1[contains(@class, 'article-title')]");
+    private final Logger LOGGER_ARTICLE = LogManager.getLogger(HomeWork02.class);
+    private WebDriver driver;
 
     @Test
     public void secondArticleTest() {
         System.setProperty("webdriver.chrome.driver", "c:\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://rus.delfi.lv");
 
@@ -29,7 +34,6 @@ public class HomeWork02 {
         String articleTitleText = articleTitle.getText();
 
         Assertions.assertEquals(nextTitleText, articleTitleText, "Wrong article page title!");
-
         WebElement commentCount = driver.findElement(ARTICLE_COMMENT_COUNT);
         commentCount.click();
 
@@ -39,6 +43,11 @@ public class HomeWork02 {
 
         Assertions.assertEquals(articleTitleText, commentTitleText, "Wrong comment page article title!");
 
+    }
+
+
+    @AfterEach
+    public void closeBrowser() {
         driver.close();
     }
 }

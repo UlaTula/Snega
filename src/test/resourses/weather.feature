@@ -9,43 +9,47 @@ Feature: Weather
 
     When we are requesting weather data
 
-    Then coord_lon is -0.13
-    And coord_lat is 51.51
+    Then lon is -0.13
+    And lat is 51.51
 
-    Then weather_id is 300
-    And weather_main is "Drizzle"
-    And weather_description is "light intensity drizzle"
-    And weather_icon is "09d"
+    And weather is:
+      | id          | 300                     |
+      | main        | Drizzle                 |
+      | description | light intensity drizzle |
+      | icon        | 09d                     |
 
-    Then base is "stations"
+    And base is "stations"
 
-    Then main_temp is 280.32
-    And main_pressure is 1012
-    And main_humidity is 81
-    And main_temp_min is 279.15
-    And main_temp_max is 281.15
+    And main is:
+      | temp     | 280.32 |
+      | pressure | 1012   |
+      | humidity | 81     |
+      | temp_min | 279.15 |
+      | temp_max | 281.15 |
 
-    Then visibility is 10000
+    And visibility is 10000
 
-    Then wind_speed is 4.1
-    And wind_deg is 80
+    And wind is:
+      | speed | 4.1 |
+      | deg   | 80  |
 
-    Then clouds_all is 90
+    And clouds_all is 90
 
-    Then dt is 1485789600
+    And dt is 1485789600
 
-    Then sys_type is 1
-    And sys_id is 5091
-    And sys_message is 0.0103
-    And sys_country is "GB"
-    And sys_sunrise is 1485762037
-    And sys_sunset is 1485794875
+    And sys is:
+      | type    | 1          |
+      | id      | 5091       |
+      | message | 0.0103     |
+      | country | GB         |
+      | sunrise | 1485762037 |
+      | sunset  | 1485794875 |
 
-    Then id is 2643743
+    And id is 2643743
 
-    Then name is "London"
+    And name is "London"
 
-    Then cod is 200
+    And cod is 200
 
 
 

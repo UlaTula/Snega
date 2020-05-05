@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Response {
     private Coord coord;
-    private List<Weather> weather;
+    @JsonProperty("weather")
+    private List<Weather> weathers;
     private String base;
     private Main main;
     private int visibility;
@@ -28,12 +30,12 @@ public class Response {
         this.coord = coord;
     }
 
-    public List<Weather> getWeather() {
-        return weather;
+    public List<Weather> getWeathers() {
+        return weathers;
     }
 
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
+    public void setWeathers(List<Weather> weathers) {
+        this.weathers = weathers;
     }
 
     public String getBase() {
@@ -83,7 +85,6 @@ public class Response {
     public void setVisibility(int visibility) {
         this.visibility = visibility;
     }
-
 
     public Sys getSys() {
         return sys;
